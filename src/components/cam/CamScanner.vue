@@ -15,14 +15,8 @@ let contextx = canvasx.getContext("2d");
 let canvasxb = document.createElement("CANVAS");
 let contextxb = canvasxb.getContext("2d");
 
-let canvas = document.createElement("CANVAS");
-let context = canvas.getContext("2d");
-let w,
-  h,
-  ratio,
-  dataURL,
-  maxw = 1100,
-  marg = 600;
+let ratio,
+  maxw = 1100;
 let instanceLoop;
 
 onMounted(() => {
@@ -68,8 +62,6 @@ onMounted(() => {
     "loadedmetadata",
     function () {
       ratio = video.value.videoWidth / video.value.videoHeight;
-      w = video.value.videoWidth;
-      h = video.value.videoHeight;
     },
     false
   );
@@ -125,6 +117,8 @@ async function startScan() {
   if (rep) {
     loading.value = false;
     scanning.value = true;
+  } else {
+    loading.value = false;
   }
 }
 
@@ -140,7 +134,7 @@ async function openCamera() {
       facingMode: { exact: "environment" },
     },
   };
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     navigator.mediaDevices
       .getUserMedia(constraints)
       .then(function success(stream) {
@@ -156,7 +150,7 @@ async function openCamera() {
             resolve(true);
           })
           .catch(() => {
-            reject("cannot use camera");
+            resolve(false);
           });
       });
   });
