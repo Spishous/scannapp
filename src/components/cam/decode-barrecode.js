@@ -1,4 +1,4 @@
-import Quagga from '@ericblade/quagga2';
+import Quagga from "@ericblade/quagga2";
 
 export class scanner {
   multipleVerification = [0, 0];
@@ -8,7 +8,7 @@ export class scanner {
   startQuagga(data, callback) {
     let locate = true;
     if (data.includes("data:", 0)) locate = false;
-    let that=this;
+    let that = this;
     Quagga.decodeSingle(
       {
         decoder: {

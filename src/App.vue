@@ -1,12 +1,14 @@
 <script setup>
-import ScanView from "./components/ScanView.vue";
-import LandingView from "./components/LandingView.vue";
+import ScanView from "./views/ScanView.vue";
+import LandingView from "./views/LandingView.vue";
 import { ref } from "vue";
 
-let firstStart = !localStorage.getItem("firstStart");
+let token = "2";
+let firstStart = localStorage.getItem("firstStart") != token;
 const view = ref(firstStart ? "landing" : "main");
+
 function changeView(value) {
-  if (value != "landing") localStorage.setItem("firstStart", false);
+  if (value != "landing") localStorage.setItem("firstStart", token);
   view.value = value;
 }
 </script>

@@ -9,7 +9,6 @@ let codeBarScanner = new decodeBC();
 const codeBar = ref(-1);
 const emits = defineEmits(["foundCode"]);
 
-let img = document.getElementById("img");
 let vid = document.createElement("VIDEO");
 let canvasx = document.createElement("CANVAS");
 let contextx = canvasx.getContext("2d");

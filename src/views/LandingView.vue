@@ -1,9 +1,9 @@
 <script setup>
-import Progress from "./composant/Progress.vue";
-import Button from "./composant/Button.vue";
-import Barcode from "./composant/icons/MdiBarcodeScan.vue";
-import Stock from "./composant/icons/Fa6SolidBoxesStacked.vue";
-import Article from "./composant/icons/MajesticonsArticleSearchLine.vue";
+import ProgressDot from "../components/ProgressDot.vue";
+import ButtonPrimary from "../components/ButtonPrimary.vue";
+import Barcode from "../components/icons/MdiBarcodeScan.vue";
+import Stock from "../components/icons/Fa6SolidBoxesStacked.vue";
+import Article from "../components/icons/MajesticonsArticleSearchLine.vue";
 import { ref } from "vue";
 let page = ref(0);
 let maxPage = 3;
@@ -52,9 +52,11 @@ function exitLanding() {
     </div>
 
     <div class="text-center mt-auto w-full">
-      <Progress class="my-6" :from="page + 1" :to="maxPage" />
-      <Button v-if="page < maxPage - 1" @click="nextPage()">Suivant</Button>
-      <Button v-else @click="exitLanding()">A vous!</Button>
+      <ProgressDot class="my-6" :from="page + 1" :to="maxPage" />
+      <ButtonPrimary v-if="page < maxPage - 1" @click="nextPage()"
+        >Suivant</ButtonPrimary
+      >
+      <ButtonPrimary v-else @click="exitLanding()">A vous!</ButtonPrimary>
     </div>
   </div>
 </template>

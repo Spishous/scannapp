@@ -1,8 +1,8 @@
 <script setup>
-import Cam from "./composant/cam/Cam.vue";
-import Button from "./composant/Button.vue";
+import CamScanner from "../components/cam/CamScanner.vue";
+import ButtonPrimary from "../components/ButtonPrimary.vue";
 import { computed, reactive, ref } from "vue";
-const cam = ref(Cam);
+const cam = ref(CamScanner);
 const isVisibleArticle = ref(false);
 const infos = reactive({
   code: "",
@@ -61,19 +61,21 @@ const description = computed(() => {
   <div
     class="text-center flex flex-col items-center flex-1 mx-6 my-20 justify-between"
   >
-    <Cam ref="cam" @foundCode="showArticle" />
-    <Button v-if="cam.scanning" @click="stopScanning">Stop</Button>
-    <Button
+    <CamScanner ref="cam" @foundCode="showArticle" />
+    <ButtonPrimary v-if="cam.scanning" @click="stopScanning"
+      >Stop</ButtonPrimary
+    >
+    <ButtonPrimary
       v-else
       @click="startScanning"
       :class="{
         'bg-neutral-700 hover:bg-neutral-700 active:bg-neutral-700':
           cam.loading,
       }"
-      >{{ cam.loading ? "Opening" : "Scanner" }}</Button
+      >{{ cam.loading ? "Opening" : "Scanner" }}</ButtonPrimary
     >
-    <!-- <Button @click="showArticle('3103220033838')">Prompt</Button> -->
-    <!-- <Button @click="showArticle('5000204658927')">Prompt</Button> -->
+    <!-- <ButtonPrimary @click="showArticle('3103220033838')">Prompt</ButtonPrimary> -->
+    <!-- <ButtonPrimary @click="showArticle('5000204658927')">Prompt</ButtonPrimary> -->
     <div class="fixed w-full h-screen top-0 pointer-events-none">
       <Transition id="bg">
         <div
