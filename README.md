@@ -1,6 +1,6 @@
 # scannapp
 
-This template should help get you started developing with Vue 3 in Vite.
+It's a quick application for scan your food product
 
 ## Recommended IDE Setup
 
